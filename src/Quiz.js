@@ -1,4 +1,4 @@
-import { Box, Button, Container, Flex, HStack } from "@chakra-ui/react";
+import { Box, Button, Container, Flex, HStack, Spinner } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "./Header";
@@ -12,8 +12,10 @@ function Quiz() {
   });
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [nav, setNav] = useState([]);
+  const [isLoading,setIsLoading] = useState(false);
 
   useEffect(() => {
+      setIsLoading(true);
     fetch(`https://raw.githubusercontent.com/tahar-moustalik/data-symfony-quiz-app/main/data/${category}.json`)
       .then((response) => response.json())
       .then((data) => {
@@ -27,6 +29,7 @@ function Quiz() {
         });
         setData(data);
         setNav([...Array(data.questions.length)].map((v, i) => i + 1));
+        setIsLoading(false);
       });
   },[category] );
 
@@ -52,55 +55,58 @@ function Quiz() {
         paddingBottom="8"
         text={`${category.toUpperCase()} QUIZ`}
       />
-      <HStack wrap="wrap" justifyContent="center">
-        {nav.map((elt, index) => (
-          <Button
-            backgroundColor={currentQuestion === index && "teal.200"}
-            key={elt}
-            onClick={() => goToQuestion(elt)}
-            marginBottom="2"
-          >
-            {elt}
-          </Button>
-        ))}
-      </HStack>
+          { isLoading ? <Spinner/> :
+              <>
+          <HStack wrap="wrap" justifyContent="center">
+              {nav.map((elt, index) => (
+                  <Button
+                      backgroundColor={currentQuestion === index && "teal.200"}
+                      key={elt}
+                      onClick={() => goToQuestion(elt)}
+                      marginBottom="2"
+                  >
+                      {elt}
+                  </Button>
+              ))}
+          </HStack>
 
-      <Flex justifyContent="space-between" marginY="6" alignItems="stretch">
-        <Button
-          fontSize="24px"
-          onClick={previousQuestion}
-          backgroundColor="teal.200"
-        >
-          👈
-        </Button>
-        <Box marginX="2" flex="1">
+              <Flex justifyContent="space-between" marginY="6" alignItems="stretch">
+              <Button
+              fontSize="24px"
+              onClick={previousQuestion}
+              backgroundColor="teal.200"
+              >
+              👈
+              </Button>
+              <Box marginX="2" flex="1">
           {data.questions.map((row, index) => {
-            return row.multi ? (
+              return row.multi ? (
               <MultiChoice
-                row={row}
-                index={index}
-                current={currentQuestion}
-                key={index}
+              row={row}
+              index={index}
+              current={currentQuestion}
+              key={index}
               />
-            ) : (
+              ) : (
               <SingleChoice
-                key={index}
-                index={index}
-                row={row}
-                current={currentQuestion}
+              key={index}
+              index={index}
+              row={row}
+              current={currentQuestion}
               />
-            );
+              );
           })}
-        </Box>
+              </Box>
 
-        <Button
-          fontSize="24px"
-          onClick={nextQuestion}
-          backgroundColor="teal.200"
-        >
-          👉
-        </Button>
-      </Flex>
+              <Button
+              fontSize="24px"
+              onClick={nextQuestion}
+              backgroundColor="teal.200"
+              >
+              👉
+              </Button>
+              </Flex>
+          </> }
     </Container>
   );
 }
