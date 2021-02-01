@@ -14,7 +14,6 @@ export default function SingleChoice({ index, row, current }) {
   const [showAnswer, setShowAnswer] = useState(false);
 
   const handleAnswerSelected = (answerIndex) => {
-    console.log(answerIndex);
     setSelected(answerIndex);
   };
 

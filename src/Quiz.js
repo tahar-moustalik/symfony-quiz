@@ -31,8 +31,7 @@ function Quiz() {
   }, );
 
   function goToQuestion(number) {
-    const q = number - 1;
-    setCurrentQuestion(q);
+    setCurrentQuestion(number-1);
   }
 
   function nextQuestion() {
