@@ -11,9 +11,9 @@ export default function MultiAnswerOption({value, id, onClick, showAnswer, selec
 
     function isAnswerCorrect() {
         if (selectedAnswers.includes(id)) {
-            return correct ? "teal.200" : "red.200";
+            return correct ? "teal.500" : "red.500";
         }
-        return correct ? "teal.200" : "";
+        return correct ? "teal.500" : "";
     }
 
     return (
@@ -21,7 +21,7 @@ export default function MultiAnswerOption({value, id, onClick, showAnswer, selec
             padding="6"
             border="2px"
             cursor="pointer"
-            borderColor={selected ? "teal.400" : "gray.100"}
+            borderColor={selected ? "teal.200" : "gray.100"}
             backgroundColor={showAnswer && isAnswerCorrect}
             fontSize="md"
             textAlign="center"

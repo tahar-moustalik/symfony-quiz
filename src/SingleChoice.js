@@ -3,7 +3,7 @@ import {
   Button,
   Flex,
   Heading,
-  OrderedList,
+  UnorderedList,
   Text,
 } from "@chakra-ui/react";
 import AnswerOption from "./AnswerOption";
@@ -27,7 +27,7 @@ export default function SingleChoice({ index, row, current }) {
           {qData.question}
         </Text>
 
-        <OrderedList spacing={8} marginTop="4">
+        <UnorderedList spacing={8} marginTop="4" listStyleType="none">
           {qData.answers.map((answer, key) => (
             <AnswerOption
               selected={selected}
@@ -39,7 +39,7 @@ export default function SingleChoice({ index, row, current }) {
               correct={answer.correct}
             />
           ))}
-        </OrderedList>
+        </UnorderedList>
         <Button
           marginTop="4"
           onClick={() => setShowAnswer(!showAnswer)}

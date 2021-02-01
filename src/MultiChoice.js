@@ -3,7 +3,7 @@ import {
   Button,
   Flex,
   Heading,
-  OrderedList,
+  UnorderedList,
   Text,
 } from "@chakra-ui/react";
 import MultiAnswerOption from "./MultiAnswerOption";
@@ -35,7 +35,7 @@ export default function MultiChoice({ index, row, current }) {
         {qData.multi && (
           <Text fontSize="md">Multiple answers maybe possible</Text>
         )}
-        <OrderedList spacing={8} marginTop="4">
+        <UnorderedList spacing={8} marginTop="4" listStyleType="none">
           {qData.answers.map((answer, key) => (
             <MultiAnswerOption
               value={answer.value}
@@ -47,7 +47,7 @@ export default function MultiChoice({ index, row, current }) {
               selectedAnswers={selectedAnswers}
             />
           ))}
-        </OrderedList>
+        </UnorderedList>
         <Button
           marginTop="4"
           onClick={() => setShowAnswer(!showAnswer)}

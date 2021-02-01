@@ -5,10 +5,10 @@ export default function AnswerOption({ selected, value, id, onClick,showAnswer,c
   function isAnswerCorrect() {
 
     if(selected === id ) {
-      return correct ? "teal.200": "red.200";
+      return correct ? "teal.500": "red.500";
     }
 
-    return correct ? "teal.200" : "";
+    return correct ? "teal.500" : "";
   }
   return (
     <ListItem
@@ -19,7 +19,7 @@ export default function AnswerOption({ selected, value, id, onClick,showAnswer,c
       textAlign="center"
       borderRadius="5px"
       onClick={() => onClick(id)}
-      borderColor={`${selected === id ? "teal.500" : "gray.200"}`}
+      borderColor={`${selected === id ? "teal.200" : "gray.200"}`}
       backgroundColor={showAnswer && isAnswerCorrect}
     >
       {value}

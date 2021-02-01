@@ -1,4 +1,4 @@
-import { Box, Button, Container, Flex, HStack, Spinner } from "@chakra-ui/react";
+import { Box, Button, Container, Flex, HStack, Spinner, Center } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "./Header";
@@ -55,7 +55,9 @@ function Quiz() {
         paddingBottom="8"
         text={`${category.toUpperCase()} QUIZ`}
       />
-          { isLoading ? <Spinner/> :
+          { isLoading ? <Center h="600px">
+                  <Spinner size="xl"/>
+          </Center> :
               <>
           <HStack wrap="wrap" justifyContent="center">
               {nav.map((elt, index) => (
