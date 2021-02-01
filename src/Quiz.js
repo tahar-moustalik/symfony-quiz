@@ -14,7 +14,7 @@ function Quiz() {
   const [nav, setNav] = useState([]);
 
   useEffect(() => {
-    fetch(`/data/${category}.json`, { mode: "no-cors" })
+    fetch(`https://raw.githubusercontent.com/tahar-moustalik/data-symfony-quiz-app/main/data/${category}.json`)
       .then((response) => response.json())
       .then((data) => {
         data.questions.forEach((element, index) => {
