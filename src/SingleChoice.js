@@ -3,14 +3,13 @@ import {
   Button,
   Flex,
   Heading,
-  ListItem,
   OrderedList,
   Text,
 } from "@chakra-ui/react";
 import AnswerOption from "./AnswerOption";
 
 export default function SingleChoice({ index, row, current }) {
-  const [qData, setQData] = useState(row);
+  const [qData] = useState(row);
   const [selected, setSelected] = useState(null);
   const [showAnswer, setShowAnswer] = useState(false);
 
