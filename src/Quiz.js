@@ -28,7 +28,7 @@ function Quiz() {
         setData(data);
         setNav([...Array(data.questions.length)].map((v, i) => i + 1));
       });
-  },[] );
+  },[category] );
 
   function goToQuestion(number) {
     setCurrentQuestion(number-1);
