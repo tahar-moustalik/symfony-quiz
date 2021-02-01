@@ -3,14 +3,13 @@ import {
   Button,
   Flex,
   Heading,
-  ListItem,
   OrderedList,
   Text,
 } from "@chakra-ui/react";
 import MultiAnswerOption from "./MultiAnswerOption";
 
 export default function MultiChoice({ index, row, current }) {
-  const [qData, setQData] = useState(row);
+  const [qData] = useState(row);
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [showAnswer, setShowAnswer] = useState(false);
   const handleAnswerSelected = (answerIndex) => {

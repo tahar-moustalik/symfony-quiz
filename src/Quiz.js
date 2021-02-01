@@ -28,7 +28,7 @@ function Quiz() {
         setData(data);
         setNav([...Array(data.questions.length)].map((v, i) => i + 1));
       });
-  }, []);
+  }, );
 
   function goToQuestion(number) {
     const q = number - 1;
@@ -56,7 +56,7 @@ function Quiz() {
       <HStack wrap="wrap" justifyContent="center">
         {nav.map((elt, index) => (
           <Button
-            backgroundColor={currentQuestion == index && "teal.200"}
+            backgroundColor={currentQuestion === index && "teal.200"}
             key={elt}
             onClick={() => goToQuestion(elt)}
             marginBottom="2"

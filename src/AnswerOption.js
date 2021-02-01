@@ -1,6 +1,5 @@
 import React from "react";
-import { Box, ListItem } from "@chakra-ui/react";
-import "./App.css";
+import { ListItem } from "@chakra-ui/react";
 export default function AnswerOption({ selected, value, id, onClick,showAnswer,correct }) {
 
   function isAnswerCorrect() {
