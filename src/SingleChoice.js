@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Flex,
-  Heading,
-  UnorderedList,
-  Text,
-} from "@chakra-ui/react";
+import { Button, Flex, Heading, UnorderedList, Text } from "@chakra-ui/react";
 import AnswerOption from "./AnswerOption";
 
 export default function SingleChoice({ index, row, current }) {
@@ -27,6 +21,13 @@ export default function SingleChoice({ index, row, current }) {
           {qData.question}
         </Text>
 
+        <Button
+          marginTop="4"
+          onClick={() => setShowAnswer(!showAnswer)}
+          alignSelf="flex-end"
+        >
+          Show answer
+        </Button>
         <UnorderedList spacing={8} marginTop="4" listStyleType="none">
           {qData.answers.map((answer, key) => (
             <AnswerOption
@@ -40,13 +41,6 @@ export default function SingleChoice({ index, row, current }) {
             />
           ))}
         </UnorderedList>
-        <Button
-          marginTop="4"
-          onClick={() => setShowAnswer(!showAnswer)}
-          alignSelf="flex-end"
-        >
-          Show answer
-        </Button>
       </Flex>
     )
   );
